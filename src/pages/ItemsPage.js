@@ -17,14 +17,14 @@ const ItemsPage = ({
 }) => {
   useEffect(() => {
     dispatch(fetchItems(limit, page_number));
-  }, []);
+  });
   const [pageNumber, setPageNumber] = useState(1);
   const [searchWord, setSearchword] = useState("");
   // Show loading, error, or success state
   const renderItems = () => {
     if (loading) return <ReactLoader />;
     if (hasErrors) return <p className="Loader">Unable to display items.</p>;
-    if (!searchWord && searchWord.length == 0) {
+    if (!searchWord && searchWord.length === 0) {
       return items.map((item) => <Item key={item.id} item={item} />);
     } else {
       return searchedItems.map((item) => <Item key={item.id} item={item} />);
