@@ -1,11 +1,12 @@
-import "./App.css";
+import React from "react";
+import ItemsPage from "./pages/ItemsPage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>lets make this </h1>
+    <div className="container">
+      <ItemsPage />
     </div>
   );
-}
+};
 
 export default App;
