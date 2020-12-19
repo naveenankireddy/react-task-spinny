@@ -20,7 +20,7 @@ export const searchItem = (searchTerm) => ({
 });
 
 // Combine all of them except  in an asynchronous thunk
-export const fetchItems = (page_number, limit) => {
+export const fetchItems = () => {
   return async (dispatch) => {
     dispatch(getItems());
 

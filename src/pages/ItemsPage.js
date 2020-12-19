@@ -52,7 +52,7 @@ const ItemsPage = ({
       </div>
       <div class="flex">{renderItems()}</div>
       <div>
-        {!searchWord && searchWord.length == 0 ? (
+        {!searchWord && searchWord.length === 0 ? (
           <p
             className="load-items"
             onClick={pageNumber < 17 ? () => handleClick(pageNumber) : null}
