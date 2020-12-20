@@ -41,7 +41,7 @@ const ItemsPage = ({
   };
   return (
     <>
-      <div>
+      <div className="search-bar">
         <input
           onChange={(e) => setSearchword(e.target.value)}
           type="text"

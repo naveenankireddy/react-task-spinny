@@ -5,14 +5,15 @@ body {
   width: 80%;
   text-align: center;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .flex {
   display: flex;
   margin-top: 100px;
-
   justify-content: space-between;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 .item {
   width: 22%;
@@ -22,8 +23,9 @@ body {
   border-radius: 10px;
 }
 .item:hover {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(228, 225, 225);
   cursor: pointer;
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.8);
 }
 .item img {
   width: 100%;
@@ -71,6 +73,18 @@ p {
 }
 .react-loader {
   margin: auto;
+}
+.search-bar {
+  position: fixed;
+  /* z-index: 12; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  right: 0.1%;
+  background-color: #1c7ac2;
+  top: 0;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 @media screen and (max-device-width: 480px) {
