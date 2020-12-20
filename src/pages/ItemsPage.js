@@ -11,13 +11,12 @@ const ItemsPage = ({
   loading,
   items,
   hasErrors,
-  limit,
   page_number,
   searchedItems,
 }) => {
   useEffect(() => {
-    dispatch(fetchItems(limit, page_number));
-  }, []);
+    dispatch(fetchItems(page_number));
+  }, [page_number, dispatch]);
   const [pageNumber, setPageNumber] = useState(1);
   const [searchWord, setSearchword] = useState("");
   // Show loading, error, or success state
