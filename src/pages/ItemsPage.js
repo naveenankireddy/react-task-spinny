@@ -16,7 +16,7 @@ const ItemsPage = ({
 }) => {
   useEffect(() => {
     dispatch(fetchItems(page_number));
-  }, [page_number, dispatch]);
+  }, [page_number]);
   const [pageNumber, setPageNumber] = useState(1);
   const [searchWord, setSearchword] = useState("");
   // Show loading, error, or success state
@@ -32,7 +32,6 @@ const ItemsPage = ({
 
   const handleClick = (pageNum) => {
     setPageNumber(pageNum + 1);
-
     dispatch(fetchMoreData(pageNum + 1));
   };
 
@@ -45,6 +44,7 @@ const ItemsPage = ({
         <input
           onChange={(e) => setSearchword(e.target.value)}
           type="text"
+          value={searchWord}
           placeholder="search for cards"
         ></input>
         <button onClick={() => handleSearch(searchWord)}>Go</button>

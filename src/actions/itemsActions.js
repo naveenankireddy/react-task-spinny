@@ -14,8 +14,8 @@ export const getItemsFailure = () => ({
 export const getItemsPages = () => ({
   type: "GET_ITEMS_PAGES",
 });
-export const searchItem = (searchTerm) => ({
-  type: "SEARCH_ITEM",
+export const loas = (searchTerm) => ({
+  type: "LOAD_SEARCH_ITEMS",
   payload: searchTerm,
 });
 
@@ -29,7 +29,6 @@ export const fetchItems = () => {
         `https://api.jikan.moe/v3/search/anime?q=<query>&limit=24&page=1`
       );
       const data = await response.json();
-
       dispatch(getItemsSuccess(data.results));
     } catch (error) {
       dispatch(getItemsFailure());
@@ -54,7 +53,12 @@ export function fetchMoreData(page_number) {
 export function search(searchWord) {
   return async (dispatch) => {
     try {
-      await dispatch(searchItem(searchWord));
+      const response = await fetch(
+        `https://api.jikan.moe/v3/search/anime?q=${searchWord}`
+      );
+      const { results } = await response.json();
+      await dispatch({ type: "LOAD_SEARCH_ITEMS", payload: results });
+      console.log({ results });
     } catch (error) {}
   };
 }

@@ -2,9 +2,9 @@ export const initialState = {
   limit: 16,
   page_number: 1,
   items: [],
-  searchedItems: [],
   loading: false,
   hasErrors: false,
+  searchedItems: [],
 };
 
 export default function itemsReducer(state = initialState, action) {
@@ -23,13 +23,9 @@ export default function itemsReducer(state = initialState, action) {
     case "LOAD_MORE_ITEMS":
       const items = state.items.concat(action.payload);
       return { ...state, items, page_number: state.page_number };
-    case "SEARCH_ITEM":
-      const searchTerm = action.payload;
-      const regex = new RegExp(searchTerm, "gi");
-      const searchResults = state.items.filter((el) => {
-        return regex.test(el.title);
-      });
-      return { ...state, searchedItems: searchResults };
+
+    case "LOAD_SEARCH_ITEMS":
+      return { ...state, searchedItems: action.payload };
     default:
       return state;
   }
