@@ -26,7 +26,11 @@ const ItemsPage = ({
     if (!searchWord && searchWord.length === 0) {
       return items.map((item) => <Item key={item.id} item={item} />);
     } else {
-      return searchedItems.map((item) => <Item key={item.id} item={item} />);
+      return searchedItems && searchedItems.length > 0 ? (
+        searchedItems.map((item) => <Item key={item.id} item={item} />)
+      ) : (
+        <h2>sorry no results found</h2>
+      );
     }
   };
 

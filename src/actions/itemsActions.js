@@ -1,6 +1,7 @@
 // Create Redux action creators that return an action
-export const getItems = () => ({
-  type: "GET_ITEMS",
+export const setLoading = (loading) => ({
+  type: "SET_LOADING",
+  payload: loading,
 });
 
 export const getItemsSuccess = (items) => ({
@@ -22,7 +23,7 @@ export const loas = (searchTerm) => ({
 // Combine all of them except  in an asynchronous thunk
 export const fetchItems = () => {
   return async (dispatch) => {
-    dispatch(getItems());
+    dispatch(setLoading());
 
     try {
       const response = await fetch(
@@ -52,6 +53,7 @@ export function fetchMoreData(page_number) {
 
 export function search(searchWord) {
   return async (dispatch) => {
+    dispatch(setLoading(true));
     try {
       const response = await fetch(
         `https://api.jikan.moe/v3/search/anime?q=${searchWord}`
@@ -59,6 +61,8 @@ export function search(searchWord) {
       const { results } = await response.json();
       await dispatch({ type: "LOAD_SEARCH_ITEMS", payload: results });
       console.log({ results });
-    } catch (error) {}
+    } catch (error) {
+      dispatch(getItemsFailure());
+    }
   };
 }

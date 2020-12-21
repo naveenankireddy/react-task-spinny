@@ -9,8 +9,8 @@ export const initialState = {
 
 export default function itemsReducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_ITEMS":
-      return { ...state, loading: true };
+    case "SET_LOADING":
+      return { ...state, loading: action.payload };
     case "GET_ITEMS_SUCCESS":
       return {
         ...state,
@@ -25,7 +25,7 @@ export default function itemsReducer(state = initialState, action) {
       return { ...state, items, page_number: state.page_number };
 
     case "LOAD_SEARCH_ITEMS":
-      return { ...state, searchedItems: action.payload };
+      return { ...state, searchedItems: action.payload, loading: false };
     default:
       return state;
   }
