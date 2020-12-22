@@ -89,18 +89,23 @@ p {
   padding-bottom: 2rem;
 }
 
+@media screen and (max-device-width: 1024px) {
+  .item {
+    width: 50%;
+  }
+}
+
 @media screen and (max-device-width: 480px) {
+  .flex {
+    display: grid;
+    grid-template-columns: auto;
+  }
   .item {
     width: 100%;
   }
 }
 @media screen and (max-device-width: 768px) {
   .item {
-    width: 47%;
-  }
-}
-@media screen and (max-device-width: 1024px) {
-  .item {
-    width: 28%;
+    width: 100%;
   }
 }
